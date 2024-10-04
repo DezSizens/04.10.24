@@ -1,0 +1,33 @@
+using System;
+using System.Windows.Forms;
+
+namespace TriangleAreaCalculator
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void btnCalculate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                double a = double.Parse(txtSideA.Text);
+                double b = double.Parse(txtSideB.Text);
+                double angleInDegrees = double.Parse(txtAngle.Text);
+
+                double angleInRadians = angleInDegrees * Math.PI / 180;
+
+                double area = 0.5 * a * b * Math.Sin(angleInRadians);
+
+                lstResults.Items.Add($"Площа трикутника: {area} кв. см.");
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Будь ласка, введіть коректні значення.");
+            }
+        }
+    }
+}
